@@ -1,0 +1,22 @@
+{
+    "dashboard": "Dashboard",
+    "account": "Account",
+    "dashboard-button": "Go To Dashboard",
+    "sign-in-button": "Sign In",
+    "sign-out-button": "Sign Out",
+    "sign-up-button": "Sign Up",
+    "items": [
+        {
+            "title": "Features",
+            "href": "/#features"
+        },
+        {
+            "title": "FAQ",
+            "href": "/#faq"
+        },
+        {
+            "title": "Pricing",
+            "href": "/#pricing"
+        }
+    ]
+}

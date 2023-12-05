@@ -1,0 +1,13 @@
+{
+    "page": {
+        "title": "Sign In - Use Write AI"
+    },
+    "title": "Sign In",
+    "email-placeholder": "Email",
+    "password-placeholder": "Password",
+    "forgot-password-button": "Forgot Password?",
+    "sign-in-button": "Sign In",
+    "or": "or",
+    "google": "Join With Google",
+    "sign-up-button": "Create An Account"
+}

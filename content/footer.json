@@ -1,0 +1,51 @@
+{
+    "name": "Use Write AI",
+    "copyright": "© 2023. All rights reserved.",
+    "navigation": {
+        "title": "Navigation",
+        "items": [
+            {
+                "title": "Features",
+                "href": "/#features"
+            },
+            {
+                "title": "FAQ",
+                "href": "/#faq"
+            },
+            {
+                "title": "Pricing",
+                "href": "/#pricing"
+            }
+        ]
+    },
+    "socials": {
+        "title": "Socials",
+        "items": [
+            {
+                "title": "Twitter",
+                "href": "https://twitter.com/"
+            },
+            {
+                "title": "Facebook",
+                "href": "https://www.facebook.com/"
+            },
+            {
+                "title": "Instagram",
+                "href": "https://www.instagram.com/"
+            }
+        ]
+    },
+    "terms": {
+        "title": "Privacy & Terms",
+        "items": [
+            {
+                "title": "Our Terms",
+                "href": "/terms"
+            },
+            {
+                "title": "Privacy Policy",
+                "href": "/terms"
+            }
+        ]
+    }
+}

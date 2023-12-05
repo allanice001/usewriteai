@@ -1,0 +1,58 @@
+{
+    "page": {
+        "title": "Home - Use Write AI"
+    },
+    "announcement": "Don't miss out on the opportunity, try 5 free generations today!",
+    "hero": {
+        "subtitle": "#1 CHATBOT ASSISTANT",
+        "title": "Elevate your business with help from AI.",
+        "description": "Get real time responses to your prompts, saving you time and helping meet deadlines effectively.",
+        "button": "Get Started Now",
+        "image-dark": "/hero-dark.svg",
+        "image-light": "/hero-light.svg"
+    },
+    "features": {
+        "subtitle": "FEATURES",
+        "title": "With unlimited use cases.",
+        "description": "From creative writing to professional communication, our AI adapts to your needs, producing content that resonates.",
+        "button": "Get Started Now",
+        "image-dark": "/features-dark.svg",
+        "image-light": "/features-light.svg"
+    },
+    "pricing": {
+        "subtitle": "PRICING",
+        "title": "Simple, straight forward pricing structure.",
+        "description": "Join countless writers, content creators, and professionals today.",
+        "plan-name": "Premium",
+        "plan-price": "$14.99",
+        "plan-features": [
+            "Unlimited Text Generation",
+            "Plagiarism Free Content",
+            "Article Creation"
+        ],
+        "plan-button": "Get Started Now"
+    },
+    "faq": {
+        "subtitle": "FAQ",
+        "title": "Frequently Asked Questions.",
+        "questions": [
+            {
+                "question": "How does the AI ensure quality and authenticity?",
+                "answer": "Our AI is trained on diverse sources to deliver authentic and high-quality content, covering various styles."
+            },
+            {
+                "question": "Can I personalize the AI generated responses?",
+                "answer": "Yes! You can easily customize AI generated content to match your unique style and perspective."
+            },
+            {
+                "question": "Is my data safe with the response generator?",
+                "answer": "Absolutely. We prioritize data security and ensure your information remains confidential and protected."
+            }
+        ]
+    },
+    "cta": {
+        "title": "Start Generating Now.",
+        "description": "Join countless writers, content creators, and professionals today.",
+        "button": "Get Started Now"
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "page": {
+        "title": "Account - Use Write AI"
+    },
+    "title": "Account",
+    "email-label": "Email",
+    "name-label": "Name",
+    "plan-label": "Plan",
+    "button": {
+        "default": "Open Customer Portal",
+        "loading": "Opening Customer Portal..."
+    }
+}

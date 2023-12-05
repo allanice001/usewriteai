@@ -1,0 +1,33 @@
+{
+    "page": {
+        "title": "Dashboard - Use Write AI"
+    },
+    "title": "Dashboard",
+    "tabs": {
+        "generate": "Generate",
+        "previous": "Previous Generations"
+    },
+    "default-response": "Hey, what would you like to generate?",
+    "response-label": "Generated Response",
+    "prompt-label": "Prompt",
+    "prompt-placeholder": "Prompt",
+    "generate-button": {
+        "loading": "Generating...",
+        "default": "Generate"
+    },
+    "premium-tag-text": "Currently Using Premium",
+    "prompt-error-length": "Your prompt must be at least 10 characters.",
+    "prompt-error-generic": "There was an error with your prompt.",
+    "previous-label": "Previous Prompts",
+    "previous-not-found": "No previous generations found...",
+    "remove-previous-button": "Remove All",
+    "previous-removed-success": "Successfully removed all previous generations.",
+    "previous-prompt-label": "Prompt",
+    "previous-response-label": "Generated Response",
+    "remaining": "Remaining",
+    "upgrade-button": {
+        "loading": "Upgrading...",
+        "default": "Upgrade Plan"
+    },
+    "copy": "Copy To Clipboard"
+}
