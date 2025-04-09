@@ -1,0 +1,189 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                 String              @id @default(cuid())
+  name               String?
+  email              String              @unique
+  emailVerified      DateTime?
+  image              String?
+  hashedPassword     String?
+  createdAt          DateTime            @default(now())
+  updatedAt          DateTime            @updatedAt
+  projects           Project[]
+  accounts           Account[]
+  sessions           Session[]
+  preferences        UserPreference?
+  apiUsage           ApiUsage?
+  sharedProjects     SharedProject[]
+  projectInvitations ProjectInvitation[]
+  subscription       Subscription?
+  stripeCustomerId   String?             @unique
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model Project {
+  id               String              @id @default(cuid())
+  title            String
+  description      String?
+  content          String?
+  userId           String
+  user             User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt        DateTime            @default(now())
+  updatedAt        DateTime            @updatedAt
+  isPublic         Boolean             @default(false)
+  sharedWith       SharedProject[]
+  invitations      ProjectInvitation[]
+  exportHistory    ExportHistory[]
+  writingAnalytics WritingAnalytics?
+  aiInteractions   AiInteraction[]
+
+  @@index([userId])
+}
+
+model UserPreference {
+  id                 String  @id @default(cuid())
+  userId             String  @unique
+  user               User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  theme              String  @default("system")
+  emailNotifications Boolean @default(true)
+  aiSuggestions      Boolean @default(true)
+  autoSave           Boolean @default(true)
+  fontSize           Int     @default(16)
+  editorFontFamily   String  @default("Inter")
+}
+
+model ApiUsage {
+  id                String   @id @default(cuid())
+  userId            String   @unique
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  totalTokensUsed   Int      @default(0)
+  monthlyTokensUsed Int      @default(0)
+  lastResetDate     DateTime @default(now())
+}
+
+model SharedProject {
+  id          String   @id @default(cuid())
+  projectId   String
+  project     Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  permissions String   @default("read") // read, write, admin
+  createdAt   DateTime @default(now())
+
+  @@unique([projectId, userId])
+}
+
+model ProjectInvitation {
+  id        String   @id @default(cuid())
+  projectId String
+  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  email     String
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  token     String   @unique
+  expires   DateTime
+  createdAt DateTime @default(now())
+
+  @@unique([projectId, email])
+}
+
+model ExportHistory {
+  id        String   @id @default(cuid())
+  projectId String
+  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  format    String
+  createdAt DateTime @default(now())
+  fileUrl   String?
+}
+
+model WritingAnalytics {
+  id               String   @id @default(cuid())
+  projectId        String   @unique
+  project          Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  wordCount        Int      @default(0)
+  characterCount   Int      @default(0)
+  sentenceCount    Int      @default(0)
+  paragraphCount   Int      @default(0)
+  readabilityScore Float?
+  topicAnalysis    Json?
+  lastUpdated      DateTime @default(now())
+}
+
+model AiInteraction {
+  id              String   @id @default(cuid())
+  projectId       String
+  project         Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  prompt          String
+  response        String
+  tokensUsed      Int
+  createdAt       DateTime @default(now())
+  interactionType String
+}
+
+model Subscription {
+  id                     String    @id @default(cuid())
+  userId                 String    @unique
+  user                   User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  stripeSubscriptionId   String?   @unique
+  stripePriceId          String?
+  stripeCurrentPeriodEnd DateTime?
+  stripeCustomerId       String?
+  planId                 String    @default("free") // free, pro, enterprise
+  status                 String    @default("active") // active, canceled, past_due, etc.
+  createdAt              DateTime  @default(now())
+  updatedAt              DateTime  @updatedAt
+}
+
+model SubscriptionUsage {
+  id                   String   @id @default(cuid())
+  userId               String   @unique
+  projectsCreated      Int      @default(0)
+  collaboratorsInvited Int      @default(0)
+  aiSuggestionsUsed    Int      @default(0)
+  wordsProcessed       Int      @default(0)
+  lastResetDate        DateTime @default(now())
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+}

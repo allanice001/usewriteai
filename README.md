@@ -1,8 +1,24 @@
+# UseWriteAI
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
+First, Copy the example environment variables to .env for the project
+```bash
+cp .env.example .env
+```
+Review the environment variable
+Implement your own stripe and auth keys
 
-First, run the development server:
+then, start the docker environment to provide a local postgres for development, pushing the schema from prisma to postgres
+```bash
+# start docker containers in detached mode
+docker compose up -d
+
+# push the schema to postgres
+prisma db push
+```
+
+then, run the development server:
 
 ```bash
 npm run dev
@@ -16,18 +32,32 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Steps for Stripe Integration
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **Set up Products and Prices in Stripe Dashboard**
 
-## Learn More
+  - Create a "Pro" product with a price ID matching your `STRIPE_PRO_PRICE_ID` variable
+  - Create an "Enterprise" product with a price ID matching your `STRIPE_ENTERPRISE_PRICE_ID` variable 
+  - Make sure both are set as recurring subscriptions (monthly billing)
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. **Configure Stripe Webhook**
+  - In your Stripe Dashboard, go to Developers > Webhooks 
+  - Add an endpoint that points to `https://yourdomain.com/api/stripe/webhook`
+  - Select at least these events to listen for:
+    - `checkout.session.completed`
+    - `invoice.payment_succeeded`
+    - `customer.subscription.updated`
+    - `customer.subscription.deleted`
+  - The webhook secret should match your `STRIPE_WEBHOOK_SECRET` variable
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+3. **Test the Integration**
+  - Start with the free tier 
+  - Try upgrading to Pro and check if Stripe checkout appears 
+  - After successful payment, verify that your subscription status updates 
+  - Test the usage limits by creating projects, collaborators, etc. 
+  - Try managing your subscription through the customer portal
 
 ## Deploy on Vercel
 
