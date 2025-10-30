@@ -1016,19 +1016,19 @@
   dependencies:
     undici-types "~6.21.0"
 
+"@types/node@20.19.19":
+  version "20.19.19"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.19.19.tgz#18c8982becd5728f92e5f1939f2f3dc85604abcd"
+  integrity sha512-pb1Uqj5WJP7wrcbLU7Ru4QtA0+3kAXrkutGiD26wUKzSMgNNaPARTUDQmElUXp64kh3cWdou3Q0C7qwwxqSFmg==
+  dependencies:
+    undici-types "~6.21.0"
+
 "@types/node@^18.11.18":
   version "18.19.86"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-18.19.86.tgz#a7e1785289c343155578b9d84a0e3e924deb948b"
   integrity sha512-fifKayi175wLyKyc5qUfyENhQ1dCNI1UNjp653d8kuYcPQN5JhX3dGuP/XmvPTg/xRBn1VTLpbmi+H/Mr7tLfQ==
   dependencies:
     undici-types "~5.26.4"
-
-"@types/node@^20.19.19":
-  version "20.19.19"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.19.19.tgz#18c8982becd5728f92e5f1939f2f3dc85604abcd"
-  integrity sha512-pb1Uqj5WJP7wrcbLU7Ru4QtA0+3kAXrkutGiD26wUKzSMgNNaPARTUDQmElUXp64kh3cWdou3Q0C7qwwxqSFmg==
-  dependencies:
-    undici-types "~6.21.0"
 
 "@types/prop-types@*":
   version "15.7.14"
@@ -1040,12 +1040,12 @@
   resolved "https://registry.yarnpkg.com/@types/raf/-/raf-3.4.3.tgz#85f1d1d17569b28b8db45e16e996407a56b0ab04"
   integrity sha512-c4YAvMedbPZ5tEyxzQdMoOhhJ4RD3rngZIdwC2/qDN3d7JpEhB6fiBRKVY1lg5B7Wk+uPBjn5f39j1/2MY1oOw==
 
-"@types/react-dom@^18":
+"@types/react-dom@18.3.6":
   version "18.3.6"
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-18.3.6.tgz#fa59a5e9a33499a792af6c1130f55921ef49d268"
   integrity sha512-nf22//wEbKXusP6E9pfOCDwFdHAX4u172eaJI4YkDRQEZiorm6KfYnSC2SWLDMVWUOWPERmJnN0ujeAfTBLvrw==
 
-"@types/react@^18":
+"@types/react@18.3.20":
   version "18.3.20"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-18.3.20.tgz#b0dccda9d2f1bc24d2a04b1d0cb5d0b9a3576ad3"
   integrity sha512-IPaCZN7PShZK/3t6Q87pfTkRm6oLTd4vztyoj+cbHUF1g3FfVb2tFIL79uCRKEfv16AhqDMBywP2VW3KIZUvcg==
